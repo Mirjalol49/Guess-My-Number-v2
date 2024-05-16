@@ -69,7 +69,7 @@ body {
 
 
 .intro-in {
-
+    position       : relative;
     display        : flex;
     align-items    : center;
     justify-content: center;
@@ -78,18 +78,19 @@ body {
 
 }
 
-.intro-text {
-    font-size  : 28px;
-    font-weight: 700;
-    color      : #513228;
+.intro-img {
+    position: absolute;
+    top     : 0;
 }
 
 
-.start-btn {
-    width    : 100%;
-    max-width: 200px;
-    font-size: 30px;
 
+
+.start-btn {
+    width        : 100%;
+    max-width    : 200px;
+    font-size    : 30px;
+    margin-top   : 400px;
     border       : 10px solid #784800;
     background   : #784800;
     color        : #FDD296;
