@@ -1,0 +1,260 @@
+/*!FONTS  */
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+/* GENERAL */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    height    : 100%;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    height : auto;
+}
+
+body {
+    display         : flex;
+    flex-direction  : column;
+    height          : 100%;
+    margin          : 0;
+    padding         : 0;
+    background-image: url(./images/wood.jpg);
+    font-family     : "Jaro", sans-serif;
+}
+
+/* VISUALLY-HIDDEN */
+.visually-hidden {
+    position   : absolute;
+    width      : 1px;
+    height     : 1px;
+    margin     : -1px;
+    padding    : 0;
+    border     : 0;
+    white-space: nowrap;
+    clip-path  : inset(100%);
+    clip       : rect(0 0 0 0);
+    overflow   : hidden;
+}
+
+/* CONTAINER */
+.container {
+    width        : 100%;
+    max-width    : 1200px;
+    margin-right : auto;
+    margin-left  : auto;
+    padding-right: 20px;
+    padding-left : 20px;
+}
+
+/* STICKY-FOOTER */
+.site-main {
+    flex-grow: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.intro-in {
+
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    flex-direction : column;
+    height         : 100vh;
+
+}
+
+.intro-text {
+    font-size  : 28px;
+    font-weight: 700;
+    color      : #513228;
+}
+
+
+.start-btn {
+    width    : 100%;
+    max-width: 200px;
+    font-size: 30px;
+
+    border       : 10px solid #784800;
+    background   : #784800;
+    color        : #FDD296;
+    font-weight  : bold;
+    padding      : 5px;
+    border-radius: 10px;
+    transition   : 0.3s all;
+    cursor       : pointer;
+}
+
+.start-btn:active {
+    transform       : scale(0.95);
+    background-color: #FDD296;
+    color           : #784800;
+    ;
+}
+
+
+
+.result {
+    width        : 100%;
+    max-width    : 150px;
+    font-size    : 70px;
+    margin       : 60px auto;
+    border       : 10px solid #8f5a0b;
+    background   : #FDD296;
+    color        : #8f5a0b;
+    font-weight  : bold;
+    padding      : 5px;
+    border-radius: 10px;
+    transition   : 0.3s all;
+    text-align   : center;
+    display      : grid;
+    place-items  : center;
+
+}
+
+.form-input {
+    position: relative;
+}
+
+.input-number {
+
+    width        : 100%;
+    font-size    : 50px;
+    margin       : 60px 0 0 0;
+    border       : 10px solid #784800;
+    background   : #FDD296;
+    color        : #784800;
+    font-weight  : bold;
+    padding      : 5px 200px 5px 5px;
+    border-radius: 10px;
+    transition   : 0.3s all;
+    outline      : none;
+
+}
+
+.input-number:focus {
+    box-shadow        : 0px 0px 3px 1px rgba(0, 0, 0, 0.51) inset;
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.51) inset;
+    -moz-box-shadow   : 0px 0px 3px 1px rgba(0, 0, 0, 0.51) inset;
+    outline           : 5px solid #513228;
+}
+
+.input-number[type="number"]::placeholder {
+    color: #784800;
+}
+
+
+.btn {
+    position : absolute;
+    top      : 60px;
+    right    : 0;
+    width    : 100%;
+    max-width: 200px;
+    font-size: 50px;
+
+    border       : 10px solid #784800;
+    background   : #784800;
+    color        : #FDD296;
+    font-weight  : bold;
+    padding      : 5px;
+    border-radius: 0px 10px 10px 0px;
+    transition   : 0.3s all;
+    cursor       : pointer;
+
+}
+
+.btn:active {
+    transform : scale(0.95);
+    color     : #784800;
+    background: #FDD296;
+
+}
+
+.reset-btn {
+
+    width    : 100%;
+    max-width: 150px;
+
+
+    display    : grid;
+    place-items: center;
+
+
+    background   : #784800;
+    color        : #FDD296;
+    font-weight  : bold;
+    padding      : 5px;
+    border-radius: 10px;
+    transition   : 0.3s all;
+    cursor       : pointer;
+    margin       : 0 auto;
+}
+
+.reset:active {
+    transform : scale(0.95);
+    color     : #784800;
+    background: #FDD296;
+}
+
+.desc {
+    font-weight: bold;
+    text-align : center;
+    font-size  : 50px;
+    color      : #513228;
+}
+
+canvas#confetti {
+    position      : fixed;
+    width         : 100%;
+    height        : 100%;
+    top           : 0px;
+    left          : 0px;
+    z-index       : 1000;
+    pointer-events: none;
+}
+
+
+/*Shake Effect*/
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake-element {
+    animation: shake 0.5s ease-in-out;
+}
