@@ -280,6 +280,9 @@ canvas#confetti {
         padding  : 0;
     }
 
+    .desc {
+        font-size: 35px;
+    }
 
 
 }
