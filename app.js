@@ -50,91 +50,91 @@ formInput.addEventListener("submit", function (e) {
     const wrongAudio = new Audio("./sounds/wrong.mp3");
     wrongAudio.play();
 
-  //?Warning a user to enter a valid number to the input
-  if (valueInput > 21) {
-    desc.textContent = "Faqat 1 va 20 orasidagi raqamlarni kirita olasiz xolos!";
-    const wrongAudio = new Audio("./sounds/wrong.mp3");
-    wrongAudio.play();
+    //?Warning a user to enter a valid number to the input
+    if (valueInput > 21) {
+      desc.textContent =
+        "Faqat 1 va 20 orasidagi raqamlarni kirita olasiz xolos!";
+      const wrongAudio = new Audio("./sounds/wrong.mp3");
+      wrongAudio.play();
 
-    //?Adding Shake animation class
-    desc.classList.add("shake-element"); // Add shake effect
-    setTimeout(() => {
-      desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-    }, 500);
-    return;
+      //?Adding Shake animation class
+      desc.classList.add("shake-element"); // Add shake effect
+      setTimeout(() => {
+        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
+      }, 500);
+      return;
+    }
+
+    // Incrementing count
+    count++;
+
+    //!ChECKING THE VALUE WITH A INPUT VALUE
+    if (valueInput === secretNum) {
+      result.style.backgroundColor = "green";
+      result.style.color = "white";
+      result.textContent = valueInput;
+      alert(`You found it in ${count} attempts!`);
+      desc.textContent = `Tabriklayman siz o'ylangan sonni topdiz`;
+      formInput.classList.add("hidden");
+      reset.classList.add("reset-btn");
+      //?Confetti effect
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti({
+        emojis: [
+          "😍",
+          "🎉",
+          "🎊",
+          "✨",
+          "🥳",
+          "🎈",
+          "🎉",
+          "🪄",
+          "🥓",
+          "🥳",
+          "🎁",
+          "🎇",
+          "✨",
+          "🥳",
+          "🥓",
+          "🎉",
+          "🌸",
+          "🥓",
+          "⭐",
+          "✅",
+          "🎉",
+          "🥳",
+          "🎉",
+          "🥓",
+        ],
+      });
+
+      //?Congrats Audio sound
+      const correctAudio = new Audio("./sounds/win.MP3");
+      correctAudio.play();
+    } else if (valueInput > secretNum) {
+      desc.textContent = `O'ylangan raqam ${valueInput} dan kichikroq`;
+      //?Wrong audio
+      const wrongAudio = new Audio("./sounds/wrong.mp3");
+      wrongAudio.play();
+
+      //?Adding Shake animation class
+      desc.classList.add("shake-element"); // Add shake effect
+      setTimeout(() => {
+        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
+      }, 500); // Adjust the timeout value to match your animation duration
+    } else {
+      desc.textContent = `O'ylangan raqam ${valueInput} dan kattaroq`;
+      //?Wrong Audio
+      const wrongAudio = new Audio("./sounds/wrong.mp3");
+      wrongAudio.play();
+
+      //?Adding Shake animation class
+      desc.classList.add("shake-element"); // Add shake effect
+      setTimeout(() => {
+        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
+      }, 500); // Adjust the timeout value to match your animation duration
+    }
   }
-
-  // Incrementing count
-  count++;
-
-  //!ChECKING THE VALUE WITH A INPUT VALUE
-  if (valueInput === secretNum) {
-    result.style.backgroundColor = "green";
-    result.style.color = "white";
-    result.textContent = valueInput;
-    alert(`You found it in ${count} attempts!`);
-    desc.textContent = `Tabriklayman siz o'ylangan sonni topdiz`;
-    formInput.classList.add("hidden");
-    reset.classList.add("reset-btn");
-    //?Confetti effect
-    const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({
-      emojis: [
-        "😍",
-        "🎉",
-        "🎊",
-        "✨",
-        "🥳",
-        "🎈",
-        "🎉",
-        "🪄",
-        "🥓",
-        "🥳",
-        "🎁",
-        "🎇",
-        "✨",
-        "🥳",
-        "🥓",
-        "🎉",
-        "🌸",
-        "🥓",
-        "⭐",
-        "✅",
-        "🎉",
-        "🥳",
-        "🎉",
-        "🥓",
-      ],
-    });
-
-    //?Congrats Audio sound
-    const correctAudio = new Audio("./sounds/win.MP3");
-    correctAudio.play();
-  } else if (valueInput > secretNum) {
-    desc.textContent = `O'ylangan raqam ${valueInput} dan kichikroq`;
-    //?Wrong audio
-    const wrongAudio = new Audio("./sounds/wrong.mp3");
-    wrongAudio.play();
-
-    //?Adding Shake animation class
-    desc.classList.add("shake-element"); // Add shake effect
-    setTimeout(() => {
-      desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-    }, 500); // Adjust the timeout value to match your animation duration
-  } else {
-    desc.textContent = `O'ylangan raqam ${valueInput} dan kattaroq`;
-    //?Wrong Audio
-    const wrongAudio = new Audio("./sounds/wrong.mp3");
-    wrongAudio.play();
-
-    //?Adding Shake animation class
-    desc.classList.add("shake-element"); // Add shake effect
-    setTimeout(() => {
-      desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-    }, 500); // Adjust the timeout value to match your animation duration
-  }
-
-
   inputNum.value = "";
 });
 
