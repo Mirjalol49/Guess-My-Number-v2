@@ -34,6 +34,7 @@ formInput.addEventListener("submit", function (e) {
         : "Iltimos raqam kiriting!";
     const wrongAudio = new Audio("./sounds/wrong.mp3");
     wrongAudio.play();
+    inputNum.value = "";
     desc.classList.add("shake-element");
     setTimeout(() => desc.classList.remove("shake-element"), 500);
     return;
