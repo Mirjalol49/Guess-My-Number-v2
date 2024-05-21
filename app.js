@@ -1,35 +1,19 @@
-//!GETTING ELEMENTS
-
-//?Text ----------------------
+// Getting elements
 const result = document.querySelector(".result");
 const desc = document.querySelector(".desc");
-//?Text ----------------------
-
-//?Divs ----------------------
 const introBody = document.querySelector(".intro-body");
 const mainBody = document.querySelector(".main-body");
-//?Divs ----------------------
-
-//?Form && Input ----------------------
 const formInput = document.querySelector(".form-input");
 const inputNum = document.querySelector(".input-number");
-//?Form && Input ----------------------
-
-//?Buttons ----------------------
 const btn = document.querySelector(".btn");
 const reset = document.querySelector(".reset");
 const start = document.querySelector(".start-btn");
-//?Buttons ----------------------
 
-//Lets apply the logic🚀
-
-//! SECRET NUMBER
+// Secret number and attempt count
 let secretNum = Math.trunc(Math.random() * 20) + 1;
-
-//!Number of times the user found the answer
 let count = 0;
 
-//!START BUTTON
+// Start button logic
 start.addEventListener("click", () => {
   mainBody.classList.remove("hidden");
   introBody.classList.add("hidden");
@@ -37,108 +21,83 @@ start.addEventListener("click", () => {
   startAudio.play();
 });
 
-//!FORM SUBMIT
+// Form submit logic
 formInput.addEventListener("submit", function (e) {
   e.preventDefault();
-
-  //?Converting input value to number and trimming and getting a value
   let valueInput = Number(inputNum.value.trim());
 
-  //?Warning a user to enter a number to the input
-  if (valueInput === 0) {
-    desc.textContent = "Iltimos raqam kiriting!";
+  // Input validation
+  if (!valueInput || valueInput > 20) {
+    desc.textContent =
+      valueInput > 20
+        ? "Faqat 1 va 20 orasidagi raqamlarni kirita olasiz xolos!"
+        : "Iltimos raqam kiriting!";
     const wrongAudio = new Audio("./sounds/wrong.mp3");
     wrongAudio.play();
-
-    //?Warning a user to enter a valid number to the input
-    if (valueInput > 21) {
-      desc.textContent =
-        "Faqat 1 va 20 orasidagi raqamlarni kirita olasiz xolos!";
-      const wrongAudio = new Audio("./sounds/wrong.mp3");
-      wrongAudio.play();
-
-      //?Adding Shake animation class
-      desc.classList.add("shake-element"); // Add shake effect
-      setTimeout(() => {
-        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-      }, 500);
-      return;
-    }
-
-    // Incrementing count
-    count++;
-
-    //!ChECKING THE VALUE WITH A INPUT VALUE
-    if (valueInput === secretNum) {
-      result.style.backgroundColor = "green";
-      result.style.color = "white";
-      result.textContent = valueInput;
-      alert(`You found it in ${count} attempts!`);
-      desc.textContent = `Tabriklayman siz o'ylangan sonni topdiz`;
-      formInput.classList.add("hidden");
-      reset.classList.add("reset-btn");
-      //?Confetti effect
-      const jsConfetti = new JSConfetti();
-      jsConfetti.addConfetti({
-        emojis: [
-          "😍",
-          "🎉",
-          "🎊",
-          "✨",
-          "🥳",
-          "🎈",
-          "🎉",
-          "🪄",
-          "🥓",
-          "🥳",
-          "🎁",
-          "🎇",
-          "✨",
-          "🥳",
-          "🥓",
-          "🎉",
-          "🌸",
-          "🥓",
-          "⭐",
-          "✅",
-          "🎉",
-          "🥳",
-          "🎉",
-          "🥓",
-        ],
-      });
-
-      //?Congrats Audio sound
-      const correctAudio = new Audio("./sounds/win.MP3");
-      correctAudio.play();
-    } else if (valueInput > secretNum) {
-      desc.textContent = `O'ylangan raqam ${valueInput} dan kichikroq`;
-      //?Wrong audio
-      const wrongAudio = new Audio("./sounds/wrong.mp3");
-      wrongAudio.play();
-
-      //?Adding Shake animation class
-      desc.classList.add("shake-element"); // Add shake effect
-      setTimeout(() => {
-        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-      }, 500); // Adjust the timeout value to match your animation duration
-    } else {
-      desc.textContent = `O'ylangan raqam ${valueInput} dan kattaroq`;
-      //?Wrong Audio
-      const wrongAudio = new Audio("./sounds/wrong.mp3");
-      wrongAudio.play();
-
-      //?Adding Shake animation class
-      desc.classList.add("shake-element"); // Add shake effect
-      setTimeout(() => {
-        desc.classList.remove("shake-element"); // Remove shake effect after a short delay
-      }, 500); // Adjust the timeout value to match your animation duration
-    }
+    desc.classList.add("shake-element");
+    setTimeout(() => desc.classList.remove("shake-element"), 500);
+    return;
   }
+
+  // Incrementing count
+  count++;
+
+  // Checking the input value
+  if (valueInput === secretNum) {
+    result.style.backgroundColor = "green";
+    result.style.color = "white";
+    result.textContent = valueInput;
+    alert(`You found it in ${count} attempts!`);
+    desc.textContent = "Tabriklayman siz o'ylangan sonni topdiz";
+    formInput.classList.add("hidden");
+    reset.classList.add("reset-btn");
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti({
+      emojis: [
+        "😍",
+        "🎉",
+        "🎊",
+        "✨",
+        "🥳",
+        "🎈",
+        "🎉",
+        "🪄",
+        "🥓",
+        "🥳",
+        "🎁",
+        "🎇",
+        "✨",
+        "🥳",
+        "🥓",
+        "🎉",
+        "🌸",
+        "🥓",
+        "⭐",
+        "✅",
+        "🎉",
+        "🥳",
+        "🎉",
+        "🥓",
+      ],
+    });
+    const correctAudio = new Audio("./sounds/win.MP3");
+    correctAudio.play();
+  } else {
+    desc.textContent =
+      valueInput > secretNum
+        ? `O'ylangan raqam ${valueInput} dan kichikroq`
+        : `O'ylangan raqam ${valueInput} dan kattaroq`;
+    const wrongAudio = new Audio("./sounds/wrong.mp3");
+    wrongAudio.play();
+    desc.classList.add("shake-element");
+    setTimeout(() => desc.classList.remove("shake-element"), 500);
+  }
+
+  // Clear input field
   inputNum.value = "";
 });
 
-//!RESET FUNCTION
+// Reset function
 function resetGame() {
   result.textContent = "?";
   result.style.backgroundColor = "";
@@ -147,14 +106,10 @@ function resetGame() {
   desc.textContent = "";
   formInput.classList.remove("hidden");
   reset.classList.remove("reset-btn");
-
-  //?Secret Number
   secretNum = Math.trunc(Math.random() * 20) + 1;
-
-  //?Click audio
   const startAudio = new Audio("./sounds/click.mp3");
   startAudio.play();
 }
 
-//!RESET BUTTON
+// Reset button logic
 reset.addEventListener("click", resetGame);
