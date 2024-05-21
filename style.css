@@ -17,6 +17,7 @@
 html {
     height    : 100%;
     box-sizing: border-box;
+    overflow  : hidden;
 }
 
 img {
@@ -79,8 +80,10 @@ body {
 }
 
 .intro-img {
-    position: absolute;
-    top     : 0;
+    height   : auto;
+    position : absolute;
+    top      : 0;
+    transform: (-50%, -50%);
 }
 
 
@@ -162,7 +165,7 @@ body {
 
 .btn {
     position : absolute;
-    top      : 60px;
+    top      : 62px;
     right    : 0;
     width    : 100%;
     max-width: 200px;
@@ -258,4 +261,25 @@ canvas#confetti {
 
 .shake-element {
     animation: shake 0.5s ease-in-out;
+}
+
+
+/* Media query */
+
+@media screen and (max-width:500px) {
+
+    .input-number {
+        font-size: 25px;
+        padding  : 5px 50px 5px 5px;
+    }
+
+    .btn {
+        font-size: 25px;
+        width    : 100%;
+        max-width: 100px;
+        padding  : 0;
+    }
+
+
+
 }

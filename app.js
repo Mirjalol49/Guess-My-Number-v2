@@ -26,6 +26,9 @@ const start = document.querySelector(".start-btn");
 //! SECRET NUMBER
 let secretNum = Math.trunc(Math.random() * 20) + 1;
 
+//!Number of times the user found the answer
+let count = 0;
+
 //!START BUTTON
 start.addEventListener("click", () => {
   mainBody.classList.remove("hidden");
@@ -55,12 +58,15 @@ formInput.addEventListener("submit", function (e) {
     return;
   }
 
+  // Incrementing count
+  count++;
+
   //!ChECKING THE VALUE WITH A INPUT VALUE
   if (valueInput === secretNum) {
     result.style.backgroundColor = "green";
     result.style.color = "white";
     result.textContent = valueInput;
-
+    alert(`You found it in ${count} attempts!`);
     desc.textContent = `Tabriklayman siz o'ylangan sonni topdiz`;
     formInput.classList.add("hidden");
     reset.classList.add("reset-btn");
