@@ -50,6 +50,12 @@ formInput.addEventListener("submit", function (e) {
     const wrongAudio = new Audio("./sounds/wrong.mp3");
     wrongAudio.play();
 
+  //?Warning a user to enter a valid number to the input
+  if (valueInput > 21) {
+    desc.textContent = "Faqat 1 va 20 orasidagi raqamlarni kirita olasiz xolos!";
+    const wrongAudio = new Audio("./sounds/wrong.mp3");
+    wrongAudio.play();
+
     //?Adding Shake animation class
     desc.classList.add("shake-element"); // Add shake effect
     setTimeout(() => {
@@ -127,6 +133,8 @@ formInput.addEventListener("submit", function (e) {
       desc.classList.remove("shake-element"); // Remove shake effect after a short delay
     }, 500); // Adjust the timeout value to match your animation duration
   }
+
+
   inputNum.value = "";
 });
 
