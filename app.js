@@ -48,7 +48,6 @@ formInput.addEventListener("submit", function (e) {
     result.style.backgroundColor = "green";
     result.style.color = "white";
     result.textContent = valueInput;
-    alert(`You found it in ${count} attempts!`);
     desc.textContent = "Tabriklayman siz o'ylangan sonni topdiz";
     formInput.classList.add("hidden");
     reset.classList.add("reset-btn");
